@@ -1,0 +1,262 @@
+  [1m[36m (99.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (99.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateMoedas (20150811131528)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "moedas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar, "sigla" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150811131528"]]
+  [1m[35m (108.9ms)[0m  commit transaction
+Migrating to CreateAgencias (20150811131604)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "agencias" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar, "url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150811131604"]]
+  [1m[35m (98.3ms)[0m  commit transaction
+Migrating to CreateAgenciasMoeda (20150811140602)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "agencias_moeda" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "agencia_id" integer, "moeda_id" integer, "valor" float, "dtUltimaAtualizacao" date, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE  INDEX "index_agencias_moeda_on_agencia_id" ON "agencias_moeda" ("agencia_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_agencias_moeda_on_agencia_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_agencias_moeda_on_agencia_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_agencias_moeda_on_moeda_id" ON "agencias_moeda" ("moeda_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150811140602"]]
+  [1m[36m (119.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_agencias_moeda_on_moeda_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_agencias_moeda_on_moeda_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_agencias_moeda_on_agencia_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_agencias_moeda_on_agencia_id' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Dólar Americano' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "moedas" ("nome", "sigla", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Dólar Americano"], ["sigla", "USD"], ["created_at", "2015-08-11 14:43:52.983662"], ["updated_at", "2015-08-11 14:43:52.983662"]]
+  [1m[36m (95.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Dólar Canadense' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "moedas" ("nome", "sigla", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Dólar Canadense"], ["sigla", "CAD"], ["created_at", "2015-08-11 14:43:53.082744"], ["updated_at", "2015-08-11 14:43:53.082744"]]
+  [1m[36m (129.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Dólar Australiano' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "moedas" ("nome", "sigla", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Dólar Australiano"], ["sigla", "AUD"], ["created_at", "2015-08-11 14:43:53.216475"], ["updated_at", "2015-08-11 14:43:53.216475"]]
+  [1m[36m (88.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Euro' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "moedas" ("nome", "sigla", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Euro"], ["sigla", "EUR"], ["created_at", "2015-08-11 14:43:53.308755"], ["updated_at", "2015-08-11 14:43:53.308755"]]
+  [1m[36m (113.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Libra Esterlina' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "moedas" ("nome", "sigla", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Libra Esterlina"], ["sigla", "GBP"], ["created_at", "2015-08-11 14:43:53.425868"], ["updated_at", "2015-08-11 14:43:53.425868"]]
+  [1m[36m (197.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Peso Argentino' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "moedas" ("nome", "sigla", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Peso Argentino"], ["sigla", "ARS"], ["created_at", "2015-08-11 14:43:53.626873"], ["updated_at", "2015-08-11 14:43:53.626873"]]
+  [1m[36m (96.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Peso Chileno' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "moedas" ("nome", "sigla", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Peso Chileno"], ["sigla", "CLP"], ["created_at", "2015-08-11 14:43:53.727082"], ["updated_at", "2015-08-11 14:43:53.727082"]]
+  [1m[36m (81.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Iene Japonês' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "moedas" ("nome", "sigla", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Iene Japonês"], ["sigla", "JPY"], ["created_at", "2015-08-11 14:43:53.812163"], ["updated_at", "2015-08-11 14:43:53.812163"]]
+  [1m[36m (97.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Peso Mexicano' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "moedas" ("nome", "sigla", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Peso Mexicano"], ["sigla", "MNX"], ["created_at", "2015-08-11 14:43:53.912616"], ["updated_at", "2015-08-11 14:43:53.912616"]]
+  [1m[36m (97.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Franco Suiço' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "moedas" ("nome", "sigla", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Franco Suiço"], ["sigla", "CHF"], ["created_at", "2015-08-11 14:43:54.013172"], ["updated_at", "2015-08-11 14:43:54.013172"]]
+  [1m[36m (97.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Yuan Renmimbi Chinês' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "moedas" ("nome", "sigla", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Yuan Renmimbi Chinês"], ["sigla", "CNY"], ["created_at", "2015-08-11 14:43:54.114234"], ["updated_at", "2015-08-11 14:43:54.114234"]]
+  [1m[36m (79.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Dólar Neozelandês' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "moedas" ("nome", "sigla", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Dólar Neozelandês"], ["sigla", "NZD"], ["created_at", "2015-08-11 14:43:54.197298"], ["updated_at", "2015-08-11 14:43:54.197298"]]
+  [1m[36m (106.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Peso Uruguaio' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "moedas" ("nome", "sigla", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Peso Uruguaio"], ["sigla", "UYU"], ["created_at", "2015-08-11 14:43:54.306498"], ["updated_at", "2015-08-11 14:43:54.306498"]]
+  [1m[36m (97.1ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Dólar Americano' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mMoeda Exists (0.1ms)[0m  SELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Dólar Canadense' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Dólar Australiano' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mMoeda Exists (0.1ms)[0m  SELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Euro' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Libra Esterlina' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mMoeda Exists (0.1ms)[0m  SELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Peso Argentino' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Peso Chileno' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mMoeda Exists (0.1ms)[0m  SELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Iene Japonês' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Peso Mexicano' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mMoeda Exists (0.1ms)[0m  SELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Franco Suiço' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Yuan Renmimbi Chinês' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mMoeda Exists (0.1ms)[0m  SELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Dólar Neozelandês' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Peso Uruguaio' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMoeda Exists (0.1ms)[0m  SELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Novo Sol Peruano' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "moedas" ("nome", "sigla", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["nome", "Novo Sol Peruano"], ["sigla", "PEN"], ["created_at", "2015-08-11 14:45:44.205048"], ["updated_at", "2015-08-11 14:45:44.205048"]]
+  [1m[35m (121.9ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Dólar Americano' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mMoeda Exists (0.1ms)[0m  SELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Dólar Canadense' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Dólar Australiano' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mMoeda Exists (0.1ms)[0m  SELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Euro' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Libra Esterlina' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mMoeda Exists (0.1ms)[0m  SELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Peso Argentino' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Peso Chileno' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mMoeda Exists (0.1ms)[0m  SELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Iene Japonês' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Peso Mexicano' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMoeda Exists (0.1ms)[0m  SELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Franco Suiço' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Yuan Renmimbi Chinês' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMoeda Exists (0.1ms)[0m  SELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Dólar Neozelandês' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mMoeda Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Peso Uruguaio' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mMoeda Exists (0.1ms)[0m  SELECT  1 AS one FROM "moedas" WHERE "moedas"."nome" = 'Novo Sol Peruano' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAgencia Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "agencias" WHERE "agencias"."nome" = 'DG Câmbio' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "agencias" ("nome", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "DG Câmbio"], ["url", "http://www.dgcambio.com.br/"], ["created_at", "2015-08-11 14:55:27.384077"], ["updated_at", "2015-08-11 14:55:27.384077"]]
+  [1m[36m (94.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mAgencia Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "agencias" WHERE "agencias"."nome" = 'SP Mundi' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "agencias" ("nome", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "SP Mundi"], ["url", "https://www.spmundi.com.br/"], ["created_at", "2015-08-11 14:55:27.482670"], ["updated_at", "2015-08-11 14:55:27.482670"]]
+  [1m[36m (112.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAgencia Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "agencias" WHERE "agencias"."nome" = 'Cambionet' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "agencias" ("nome", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Cambionet"], ["url", "http://www.cambionet.com/"], ["created_at", "2015-08-11 14:55:27.599253"], ["updated_at", "2015-08-11 14:55:27.599253"]]
+  [1m[36m (105.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAgencia Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "agencias" WHERE "agencias"."nome" = 'AGK Corretora' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "agencias" ("nome", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "AGK Corretora"], ["url", "http://www.agkcorretora.com.br"], ["created_at", "2015-08-11 14:55:27.708414"], ["updated_at", "2015-08-11 14:55:27.708414"]]
+  [1m[36m (121.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAgencia Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "agencias" WHERE "agencias"."nome" = 'Hayata Turismo' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "agencias" ("nome", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Hayata Turismo"], ["url", "http://www.s.hayata.com.br"], ["created_at", "2015-08-11 14:55:27.834465"], ["updated_at", "2015-08-11 14:55:27.834465"]]
+  [1m[36m (121.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAgencia Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "agencias" WHERE "agencias"."nome" = '4 Cantos Turismo' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "agencias" ("nome", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "4 Cantos Turismo"], ["url", "http://www.4cantoscambio.com.br/"], ["created_at", "2015-08-11 14:55:27.959908"], ["updated_at", "2015-08-11 14:55:27.959908"]]
+  [1m[36m (113.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAgencia Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "agencias" WHERE "agencias"."nome" = 'Casa Aliança' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "agencias" ("nome", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Casa Aliança"], ["url", "http://www.casaalianca.com.br"], ["created_at", "2015-08-11 14:55:28.076307"], ["updated_at", "2015-08-11 14:55:28.076307"]]
+  [1m[36m (115.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mAgencia Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "agencias" WHERE "agencias"."nome" = 'Ultramar Viagens' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "agencias" ("nome", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Ultramar Viagens"], ["url", "http://www.ultramarviagens.com.br"], ["created_at", "2015-08-11 14:55:28.194600"], ["updated_at", "2015-08-11 14:55:28.194600"]]
+  [1m[36m (114.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAgencia Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "agencias" WHERE "agencias"."nome" = 'Confidence' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "agencias" ("nome", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Confidence"], ["url", "https://confidencecompraonline.com.br"], ["created_at", "2015-08-11 14:55:28.312315"], ["updated_at", "2015-08-11 14:55:28.312315"]]
+  [1m[36m (114.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAgencia Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "agencias" WHERE "agencias"."nome" = 'Sidney Câmbio' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "agencias" ("nome", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Sidney Câmbio"], ["url", "http://www.sidney.com.br"], ["created_at", "2015-08-11 14:55:28.430382"], ["updated_at", "2015-08-11 14:55:28.430382"]]
+  [1m[36m (129.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAgencia Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "agencias" WHERE "agencias"."nome" = 'AVS Turismo' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "agencias" ("nome", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "AVS Turismo"], ["url", "https://www.avsturismo.com.br"], ["created_at", "2015-08-11 14:55:28.564235"], ["updated_at", "2015-08-11 14:55:28.564235"]]
+  [1m[36m (113.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAgencia Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "agencias" WHERE "agencias"."nome" = 'Picchioni Câmbio Virtual' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "agencias" ("nome", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Picchioni Câmbio Virtual"], ["url", "https://www.picchionicambiovirtual.com.br/"], ["created_at", "2015-08-11 14:55:28.681478"], ["updated_at", "2015-08-11 14:55:28.681478"]]
+  [1m[36m (113.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mAgencia Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "agencias" WHERE "agencias"."nome" = 'Câmbio BR' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "agencias" ("nome", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Câmbio BR"], ["url", "http://www.cambiobr.com.br/"], ["created_at", "2015-08-11 14:55:28.800040"], ["updated_at", "2015-08-11 14:55:28.800040"]]
+  [1m[36m (128.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAgencia Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "agencias" WHERE "agencias"."nome" = 'Singratur' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "agencias" ("nome", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Singratur"], ["url", "http://www.singratur.com.br"], ["created_at", "2015-08-11 14:55:28.932994"], ["updated_at", "2015-08-11 14:55:28.932994"]]
+  [1m[36m (129.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAgencia Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "agencias" WHERE "agencias"."nome" = 'Câmbios e Vistos' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "agencias" ("nome", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Câmbios e Vistos"], ["url", "http://cambioevistos.com.br"], ["created_at", "2015-08-11 14:55:29.066736"], ["updated_at", "2015-08-11 14:55:29.066736"]]
+  [1m[36m (130.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAgencia Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "agencias" WHERE "agencias"."nome" = 'FlexCambio' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "agencias" ("nome", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "FlexCambio"], ["url", "http://www.flexcambio.com.br/"], ["created_at", "2015-08-11 14:55:29.200683"], ["updated_at", "2015-08-11 14:55:29.200683"]]
+  [1m[36m (129.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAgencia Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "agencias" WHERE "agencias"."nome" = 'Torre Câmbio' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "agencias" ("nome", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Torre Câmbio"], ["url", "http://www.torrecambio.com.br/"], ["created_at", "2015-08-11 14:55:29.335154"], ["updated_at", "2015-08-11 14:55:29.335154"]]
+  [1m[36m (121.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAgencia Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "agencias" WHERE "agencias"."nome" = 'Maxima Câmbio' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "agencias" ("nome", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Maxima Câmbio"], ["url", "https://lojavirtual.maximacambio.com.br"], ["created_at", "2015-08-11 14:55:29.460614"], ["updated_at", "2015-08-11 14:55:29.460614"]]
+  [1m[36m (121.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAgencia Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "agencias" WHERE "agencias"."nome" = 'Prontur' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "agencias" ("nome", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["nome", "Prontur"], ["url", "http://www.prontur.com.br/turismo/"], ["created_at", "2015-08-11 14:55:29.585890"], ["updated_at", "2015-08-11 14:55:29.585890"]]
+  [1m[36m (121.8ms)[0m  [1mcommit transaction[0m

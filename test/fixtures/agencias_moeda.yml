@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  valor: 1.5
+  dtUltimaAtualizacao: 2015-08-11
+
+two:
+  valor: 1.5
+  dtUltimaAtualizacao: 2015-08-11
