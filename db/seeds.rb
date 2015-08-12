@@ -10,7 +10,7 @@ Moeda.create([{nome: 'Dólar Americano', sigla:'USD'}, {nome: 'Dólar Canadense'
               {nome: 'Dólar Australiano', sigla:'AUD'}, {nome: 'Euro', sigla:'EUR'},
               {nome: 'Libra Esterlina', sigla:'GBP'}, {nome: 'Peso Argentino', sigla:'ARS'},
               {nome: 'Peso Chileno', sigla:'CLP'}, {nome: 'Iene Japonês', sigla:'JPY'},
-              {nome: 'Peso Mexicano', sigla:'MNX'}, {nome: 'Franco Suiço', sigla:'CHF'},
+              {nome: 'Peso Mexicano', sigla:'MXN'}, {nome: 'Franco Suiço', sigla:'CHF'},
               {nome: 'Yuan Renmimbi Chinês', sigla:'CNY'}, {nome: 'Dólar Neozelandês', sigla:'NZD'},
               {nome: 'Peso Uruguaio', sigla:'UYU'}, {nome: 'Novo Sol Peruano', sigla:'PEN'}])
 
