@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20150811140602) do
   create_table "agencias", force: :cascade do |t|
     t.string   "nome"
     t.string   "url"
+    t.string   "parser"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -24,9 +25,9 @@ ActiveRecord::Schema.define(version: 20150811140602) do
     t.integer  "agencia_id"
     t.integer  "moeda_id"
     t.float    "valor"
-    t.date     "dtUltimaAtualizacao"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.integer  "diffUltimaAtualizacao"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   add_index "agencias_moeda", ["agencia_id"], name: "index_agencias_moeda_on_agencia_id"

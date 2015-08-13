@@ -4,7 +4,7 @@ class CreateAgenciasMoeda < ActiveRecord::Migration
       t.belongs_to :agencia, index: true
       t.belongs_to :moeda, index: true
       t.float :valor
-      t.date :dtUltimaAtualizacao
+      t.integer :diffUltimaAtualizacao #em segundos
 
       t.timestamps null: false
     end

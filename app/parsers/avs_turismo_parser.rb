@@ -18,8 +18,6 @@ class AVSTurismoParser < CambioParserInterface
       if (/RVTM/.match("#{nomeMoeda}") == nil)
         valores = adicionarValorMoeda(nomeMoeda, valorMoeda, valores)
       end
-
-      #puts "#{nomeMoeda} |  #{valorMoeda}"
     end
 
     valores

@@ -45,6 +45,7 @@ class CambioParserInterface
     if Utils.valid_float?(valorMoeda)
       siglaMoeda = obterSiglaMoeda(nomeMoeda)
       if(siglaMoeda)
+        #valores = valores.merge!({:sigla => siglaMoeda, :valor => valorMoeda.to_f})
         valores[siglaMoeda] = valorMoeda.to_f
       end
     else
