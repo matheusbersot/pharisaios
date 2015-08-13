@@ -8,16 +8,18 @@ class TorreCambioParser < CambioParserInterface
     pagina.css("div[class='boxProduto'] > span[class='nomeProduto'] ~ div[class='espacoDetalhesProduto'] div[class='espacoPrecoProduto']
              span[class='precoProduto']").each do |node|
 
-      nomeMoeda = node.parent.parent.previous.previous.text
+      nomeMoeda = node.parent.parent.previous.previous.text.strip
       valorMoeda = node.text.strip
+      valorMoeda = valorMoeda.gsub(',','.')
 
-      siglaMoeda = obterSiglaMoeda(nomeMoeda)
-      if(siglaMoeda)
-        valores[siglaMoeda] = valorMoeda
+      if Utils.valid_float?(valorMoeda)
+        siglaMoeda = obterSiglaMoeda(nomeMoeda)
+        if(siglaMoeda)
+          valores[siglaMoeda] = valorMoeda.to_f
+        end
+      else
+        #TODO: pensar no que fazer se a moeda não puder ser um número real (possivelmente um caso de erro)
       end
-
-      #puts "#{nomeMoeda.strip} |  #{node.text.strip}"
-
     end
     valores
   end
