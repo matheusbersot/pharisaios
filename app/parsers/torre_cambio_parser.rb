@@ -1,7 +1,7 @@
 class TorreCambioParser < CambioParserInterface
 
   def self.obter_dados
-    pagina = Nokogiri::HTML(open("http://www.torrecambio.com.br/"))
+    pagina = Nokogiri::HTML(open("http://www.torrecambio.com.br/"), nil, 'utf-8')
 
     valores = {}
 
@@ -12,14 +12,7 @@ class TorreCambioParser < CambioParserInterface
       valorMoeda = node.text.strip
       valorMoeda = valorMoeda.gsub(',','.')
 
-      if Utils.valid_float?(valorMoeda)
-        siglaMoeda = obterSiglaMoeda(nomeMoeda)
-        if(siglaMoeda)
-          valores[siglaMoeda] = valorMoeda.to_f
-        end
-      else
-        #TODO: pensar no que fazer se a moeda não puder ser um número real (possivelmente um caso de erro)
-      end
+      valores = adicionarValorMoeda(nomeMoeda, valorMoeda, valores)
     end
     valores
   end

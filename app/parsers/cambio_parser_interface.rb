@@ -40,4 +40,17 @@ class CambioParserInterface
 
     siglaMoeda
   end
+
+  def self.adicionarValorMoeda(nomeMoeda, valorMoeda, valores)
+    if Utils.valid_float?(valorMoeda)
+      siglaMoeda = obterSiglaMoeda(nomeMoeda)
+      if(siglaMoeda)
+        valores[siglaMoeda] = valorMoeda.to_f
+      end
+    else
+      puts "Erro: #{self.class} - Não foi possível obter valor da moeda #{nomeMoeda}"
+      #TODO: pensar no que fazer se a moeda não puder ser um número real (possivelmente um caso de erro)
+    end
+    valores
+  end
 end
