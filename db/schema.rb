@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150811140602) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "agencias", force: :cascade do |t|
     t.string   "nome"
     t.string   "url"
@@ -30,8 +33,8 @@ ActiveRecord::Schema.define(version: 20150811140602) do
     t.datetime "updated_at",            null: false
   end
 
-  add_index "agencias_moeda", ["agencia_id"], name: "index_agencias_moeda_on_agencia_id"
-  add_index "agencias_moeda", ["moeda_id"], name: "index_agencias_moeda_on_moeda_id"
+  add_index "agencias_moeda", ["agencia_id"], name: "index_agencias_moeda_on_agencia_id", using: :btree
+  add_index "agencias_moeda", ["moeda_id"], name: "index_agencias_moeda_on_moeda_id", using: :btree
 
   create_table "moedas", force: :cascade do |t|
     t.string   "nome"
