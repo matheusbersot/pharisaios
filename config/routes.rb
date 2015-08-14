@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  get 'moeda/obterValoresDeUmaMoeda/:sigla_moeda' => 'moeda#obterValoresDeUmaMoeda'
+  get 'moeda/obterTudo' => 'moeda#obterValoresDeTodasMoedas'
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
