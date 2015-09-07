@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'moeda/obterValoresDeUmaMoeda/:sigla_moeda' => 'moeda#obterValoresDeUmaMoeda'
-  get 'moeda/obterTudo' => 'moeda#obterValoresDeTodasMoedas'
+  get 'home/obterValoresDeUmaMoeda/:sigla_moeda' => 'home#obterValoresDeUmaMoeda'
+  get 'home/obterTudo' => 'home#obterValoresDeTodasMoedas'
+  get 'home/obterMoedas' => 'home#obterMoedas'
+  get 'home/obterAgencias' => 'home#obterAgencias'
+
+
 
 
 
